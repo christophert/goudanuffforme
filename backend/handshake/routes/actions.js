@@ -63,14 +63,14 @@ router.get('/getline', function(req, res, next){
             break;
         case 4:
 			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/icy/json', function(error, response, body){
-                word1 = JSON.parse(body)['adjective']['syn'][Math.floor((Math.random()*6)+1)];
+                word1 = JSON.parse(body)['adjective']['syn'][Math.floor((Math.random()*7)+1)];
                 result = word1+". It's an icebreaker."; 
                 dispatchResult(res, result);
 			});
 			break;
 		case 5:
 			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/ball/json', function(error, response, body){
-                word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*4)+1)];
+                word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*6)+1)];
                 result = "I must be a "+word1+" because I've fallen for you.";
                 dispatchResult(res, result);
 			});
@@ -85,7 +85,7 @@ router.get('/getline', function(req, res, next){
 		case 7:
 			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=150000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', function(error, response, body){
                 word1 = JSON.parse(body)['word'];
-                result = "There' only one thing I want to change about you, and that's your "+word1;
+                result = "There's only one thing I want to change about you, and that's your "+word1;
                 dispatchResult(res, result);
 			});
 			break;
