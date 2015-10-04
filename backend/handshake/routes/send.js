@@ -22,7 +22,8 @@ router.post('/phone', function(req, res, next) {
                 from: "+15859783364"
             }, function(err, message) {
                 if(err) {
-                    console.log(err); 
+                    console.log(err);
+                    res.status(err.status);
                     result = {
                         'status': 'ERROR',
                         'errmsg': message
@@ -36,6 +37,7 @@ router.post('/phone', function(req, res, next) {
                 res.send(result);
             });
         } else {
+            res.status(err.status);
             res.send({
                 'status': 'ERROR',
                 'errmsg': err
@@ -64,6 +66,7 @@ router.post('/email', function(req, res, next) {
                 'pickUpLine': pkline
             });
         } else {
+            res.status(err.status);
             res.send({
                 'status': 'ERROR',
                 'errmsg': err
