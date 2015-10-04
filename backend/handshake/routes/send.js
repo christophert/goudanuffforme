@@ -29,11 +29,13 @@ router.post('/', function(req, res, next) {
         to: "+1"+phoneNum,
         from: "+15859783364"
     }, function(err, message) {
-        res.send({
-            'status': 'ERROR',
-            'errmsg': message
-        });
-        return -1;
+        if(err) { 
+            res.send({
+                'status': 'ERROR',
+                'errmsg': message
+            });
+            return -1;
+        }
     });
     res.send({
         'status': 'OK',
