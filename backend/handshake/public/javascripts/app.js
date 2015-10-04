@@ -25,9 +25,10 @@ $("#getContact").submit(function(e) {
         cache: false,
         success: function(r) {
             $("#preform").hide();
-            $("#getContact").hide();
-            $("#pickupLine").html(r.pickUpLine);
-            $("#pickupLine").show();
+            $("#getContact").fadeOut("slow", function() {
+                $("#pickupLine").html(r.pickUpLine);
+                $("#pickupLine").show();
+            });
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log(errorThrown);
