@@ -158,7 +158,7 @@ router.get('/getline', function(req, res, next){
 			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/back/json', function(error, response, body){
                 word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*6)+1)];
                 result = "Your "+word1+" looks heavy, can I hold it for you?"; 
-                dipatchResult(res, result);
+                dispatchResult(res, result);
 			});
 			break;
 		case 20:
