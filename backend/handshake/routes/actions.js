@@ -15,7 +15,7 @@ router.get('/getline', function(req, res, next){
 			result = "Hey "+word1+" did you fall from "+word2+" because you're "+word3+" is "+word4;
 			break;
 		case 2:
-			var rando = (Math.floor((Math.random()*3)+1);
+			var rando = Math.floor((Math.random()*3)+1);
 			if(rando == 1){
 				result = "Are you a magnet, because I'm attracted to you.";
 			}
