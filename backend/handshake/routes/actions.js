@@ -58,7 +58,7 @@ router.get('/getline', function(req, res, next){
 			result = "There' only one thing I want to change about you, and that's your "+word1;
 			break;
 		case 8:
-			var rando = (Math.floor((Math.random()*3)+1);
+			var rando = Math.floor((Math.random()*3)+1);
 			if(rando == 1)
 				result = "Kiss me if I'm wrong, but 2+2=5, right?";
 			else if(rando == 2)
