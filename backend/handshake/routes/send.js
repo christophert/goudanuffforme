@@ -8,9 +8,10 @@ function getAPickupLine() {
         if(!err && resp.statusCode == 200) {
             var line = JSON.parse(body)['pickUpLine'];
             return line;
+        } else {
+            return 'we failed you, there\'s no pickup line';
         }
     });
-    return 'we failed you, there\'s no pickup line';
 }
 
 /* GET home page. */
