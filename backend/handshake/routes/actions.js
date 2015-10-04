@@ -77,7 +77,7 @@ router.get('/getline', function(req, res, next){
 			result = "Your "+word1+" look so lonely, would they like to meet mine?";
 			break;
 		case 11:
-			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', functio(error, response, body){
+			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', function(error, response, body){
                 word2 = JSON.parse(body)['word'];
             });
 			result = "Hey, don't I know you? Yeah, you're the "+word1+" with the "+word2+" "+word3+".";
@@ -87,7 +87,7 @@ router.get('/getline', function(req, res, next){
 			result = "If I told you that you had a great "+word1+", would you hold it against me?";
 			break;
 		case 13:
-			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', functio(error, response, body){
+			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', function(error, response, body){
                 word1 = JSON.parse(body)['word'];
             });
 			result = "Were you arrested earlier, because its gotta be illegal to look that "+word1+".";
