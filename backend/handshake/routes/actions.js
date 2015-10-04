@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 router.get('/getline', function(req, res, next){
 	var word1;
