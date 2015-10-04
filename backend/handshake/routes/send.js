@@ -1,9 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 var configuration = require('../config.json');
 
 function getAPickupLine() {
-    return 'this should be a pickup line';
+    request('/actions/getline', function(err, resp, body) {
+        if(!err && resp.statusCode == 200) {
+            var line = JSON.parse(body)['pickUpLine'];
+            return line;
+        }
+    });
+    return 'we failed you, there\'s no pickup line';
 }
 
 /* GET home page. */
