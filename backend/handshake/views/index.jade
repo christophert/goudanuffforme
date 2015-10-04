@@ -6,6 +6,10 @@ block content
             .cover-container
                 .masthead.clearfix
                     .inner
+                        h2.masthead-brand
+                            | Gouda 'nuff for me
+                            br
+                            small Cheesy Pickup Line Generator
                         ul.nav.masthead-nav
                             li.active#homeli
                                 a#navigateit(href='/') Home
@@ -29,6 +33,8 @@ block content
                                         button.generate-button(type='submit') Generate
                     p.lead#pickupLine
                         | line here
+                        form.form-getcontact#reroll(role='form')
+                            button.generate-button(type='submit') Generate again
                 .mastfoot
                     .inner
                         p

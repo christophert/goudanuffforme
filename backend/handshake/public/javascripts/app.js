@@ -1,20 +1,10 @@
-
-var getUrlParam = function GetURLParameter(sParam) {
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
-        {
-            return sParameterName[1];
-        }
-    }
-}
+var serializedData;
+var method;
 
 $('#navigateit').click(function (e) {
     if($(this).text() === "Go Back") {
         $(this).html('Home');
+        $("#reroll").hide();
     }
 });
 
@@ -26,8 +16,9 @@ $('#formtabs a').click(function (e) {
 $("#getContact").submit(function(e) {
     e.preventDefault();
     
-    var serializedData = $(this).serialize();
+    serializedData = $(this).serialize();
     console.log(serializedData);
+    method = 'phone';
     $.ajax({
         type: "POST",
         url: "/api/send/phone",
@@ -43,6 +34,7 @@ $("#getContact").submit(function(e) {
                 $("#homeli").show();
                 $("#pickupLine").html(r.pickUpLine);
                 $("#pickupLine").show();
+                $("#reroll").show();
             });
         },
         error: function(xhr, textStatus, errorThrown) {
@@ -53,8 +45,9 @@ $("#getContact").submit(function(e) {
 
 $("#getContactEmail").submit(function(e) {
     e.preventDefault();
-    var serializedData = $(this).serialize();
+    serializedData = $(this).serialize();
     console.log(serializedData);
+    method = 'email';
     $.ajax({
         type: "POST",
         url: "/api/send/email",
@@ -70,6 +63,7 @@ $("#getContactEmail").submit(function(e) {
                 $("#homeli").show();
                 $("#pickupLine").html(r.pickUpLine);
                 $("#pickupLine").show();
+                $("#reroll").show();
             });
         },
         error: function(xhr, textStatus, errorThrown) {
@@ -78,3 +72,21 @@ $("#getContactEmail").submit(function(e) {
     });
 });
 
+$("#reroll").submit(function(e) {
+    e.preventDefault();
+    console.log(serializedData);
+    $.ajax({
+        type: "POST",
+        url: "/api/send/"+method,
+        data: serializedData,
+        dataType: "json",
+        timeout: 2000,
+        cache: false,
+        success: function(r) {
+            $("#pickupLine").html(r.pickUpLine);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+});
