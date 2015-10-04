@@ -6,18 +6,17 @@ block content
             .cover-container
                 .masthead.clearfix
                     .inner
-                        h3.masthead-brand GoudaNuffForMe
                         ul.nav.masthead-nav
                             li.active
                                 a(href='#') Home
                 .inner.cover
-                    h1.cover-heading impress.
                     p.lead
-                        form.form-getcontact(role='form')
+                        form.form-getcontact(role='form',action='#',method='POST')
                             input.form-control(type='tel', placeholder='XXX-XXX-XXXX', required='', autofocus='')
+                            button.generate-button(type='submit') Generate
                 .mastfoot
                     .inner
                         p
-                            | Designed for comedic relief by
+                            | Designed for comedic relief by 
                             a(href='http://goudanufffor.me/developers') us
                             | .
