@@ -10,10 +10,12 @@ block content
                             li.active
                                 a(href='#') Home
                 .inner.cover
-                    p.lead
-                        form.form-getcontact(role='form',action='#',method='POST')
-                            input.form-control(type='tel', placeholder='XXX-XXX-XXXX', required='', autofocus='')
+                    p.lead#preform
+                        form.form-getcontact#getContact(role='form')
+                            input.form-control(name='phoneNum',type='tel', placeholder='XXX-XXX-XXXX', required='', autofocus='')
                             button.generate-button(type='submit') Generate
+                    p.lead#pickupLine
+                        | line here
                 .mastfoot
                     .inner
                         p
