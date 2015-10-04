@@ -25,7 +25,10 @@ $("#getContact").submit(function(e) {
         cache: false,
         success: function(r) {
             $("#preform").hide();
-            $("#getContact").fadeOut("slow", function() {
+            $("#getContact").fadeOut("fast", function() {
+                $("#navigateit").attr('href', '/');
+                $("#navigateit").html('Go Back');
+                $("#homeli").show();
                 $("#pickupLine").html(r.pickUpLine);
                 $("#pickupLine").show();
             });
