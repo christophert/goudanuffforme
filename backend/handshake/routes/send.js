@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
 
     var pkline = getAPickupLine();
     var result;
-    request('http://direct.goudanufffor.me/actions/getline', function(err, resp, body) {
+    request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
         console.log("err: ", err, " resp: ", resp, " body: ", body);
         if(!err && resp.statusCode == 200) {
             console.log(body);
