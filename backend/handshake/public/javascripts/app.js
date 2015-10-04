@@ -28,14 +28,20 @@ $("#getContact").submit(function(e) {
         cache: false,
         success: function(r) {
 //            $("#preform").hide();
-            $("#tabentry").fadeOut("fast", function() {
-                $("#navigateit").attr('href', '/');
-                $("#navigateit").html('Go Back');
-                $("#homeli").show();
-                $("#pickupLine").html(r.pickUpLine);
-                $("#pickupLine").show();
-                $("#reroll").show();
-            });
+            if(r.status === 400) {
+                $("#errmsg").html(r.message);
+                $("#errmsg").show();
+                $("#errmsg").hide().delay(2000);
+            } else {
+                $("#tabentry").fadeOut("fast", function() {
+                    $("#navigateit").attr('href', '/');
+                    $("#navigateit").html('Go Back');
+                    $("#homeli").show();
+                    $("#pickupLine").html(r.pickUpLine);
+                    $("#pickupLine").show();
+                    $("#reroll").show();
+                });
+            }
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -57,14 +63,20 @@ $("#getContactEmail").submit(function(e) {
         cache: false,
         success: function(r) {
  //           $("#preform").hide();
-            $("#tabentry").fadeOut("fast", function() {
-                $("#navigateit").attr('href', '/');
-                $("#navigateit").html('Go Back');
-                $("#homeli").show();
-                $("#pickupLine").html(r.pickUpLine);
-                $("#pickupLine").show();
-                $("#reroll").show();
-            });
+            if(r.status === 400) {
+                $("#errmsg").html(r.message);
+                $("#errmsg").show();
+                $("#errmsg").hide().delay(2000);
+            } else {
+                $("#tabentry").fadeOut("fast", function() {
+                    $("#navigateit").attr('href', '/');
+                    $("#navigateit").html('Go Back');
+                    $("#homeli").show();
+                    $("#pickupLine").html(r.pickUpLine);
+                    $("#pickupLine").show();
+                    $("#reroll").show();
+                });
+            }
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -83,7 +95,13 @@ $("#reroll").submit(function(e) {
         timeout: 2000,
         cache: false,
         success: function(r) {
-            $("#pickupLine").html(r.pickUpLine);
+            if(r.status === 400) {
+                $("#errmsg").html(r.message);
+                $("#errmsg").show();
+                $("#errmsg").hide().delay(2000);
+            } else {
+                $("#pickupLine").html(r.pickUpLine);
+            }
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log(errorThrown);
