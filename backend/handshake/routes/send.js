@@ -4,7 +4,7 @@ var request = require('request');
 var configuration = require('../config.json');
 
 function getAPickupLine() {
-    request('/actions/getline', function(err, resp, body) {
+    request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
         if(!err && resp.statusCode == 200) {
             var line = JSON.parse(body)['pickUpLine'];
             return line;
