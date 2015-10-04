@@ -12,7 +12,7 @@ var getUrlParam = function GetURLParameter(sParam) {
     }
 }
 
-$("#generateButtonEntry").submit(function(e) {
+$("#getContact").submit(function(e) {
     e.preventDefault();
     
     var serializedData = $(this).serialize();
@@ -25,6 +25,7 @@ $("#generateButtonEntry").submit(function(e) {
         cache: false,
         success: function(r) {
             $("#preform").hide();
+            $("#getContact").hide();
             $("#pickupLine").html(r.pickUpLine);
             $("#pickupLine").show();
         },
@@ -32,4 +33,4 @@ $("#generateButtonEntry").submit(function(e) {
             console.log(errorThrown);
         }
     });
-}
+});

@@ -11,9 +11,9 @@ block content
                                 a(href='#') Home
                 .inner.cover
                     p.lead#preform
-                        form.form-getcontact(role='form',action='#',method='POST')
+                        form.form-getcontact#getContact(role='form')
                             input.form-control(type='tel', placeholder='XXX-XXX-XXXX', required='', autofocus='')
-                            button.generate-button#generateButtonEntry(type='submit') Generate
+                            button.generate-button(type='submit') Generate
                     p.lead#pickupLine
                         | line here
                 .mastfoot
