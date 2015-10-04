@@ -40,8 +40,7 @@ $("#getContact").submit(function(e) {
         error: function(xhr, textStatus, errorThrown) {
             console.log(errorThrown);
             $("#errmsg").html(errorThrown);
-            $("#errmsg").show();
-            $("#errmsg").hide().delay(2000);
+            $("#errmsg").show(0).delay(2000).hide(0);
         }
     });
 });
@@ -72,8 +71,7 @@ $("#getContactEmail").submit(function(e) {
         error: function(xhr, textStatus, errorThrown) {
             console.log(errorThrown);
             $("#errmsg").html(errorThrown);
-            $("#errmsg").show();
-            $("#errmsg").hide().delay(2000);
+            $("#errmsg").show(0).delay(2000).hide(0);
         }
     });
 });
@@ -94,8 +92,7 @@ $("#reroll").submit(function(e) {
         error: function(xhr, textStatus, errorThrown) {
             console.log(errorThrown);
             $("#errmsg").html(errorThrown);
-            $("#errmsg").show();
-            $("#errmsg").hide().delay(2000);
+            $("#errmsg").show(0).delay(2000).hide(0);
         }
     });
 });
