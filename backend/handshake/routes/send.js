@@ -11,8 +11,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var phoneNum = req.body.phoneNum;
     var client = require('twilio')(configuration.twilio.ACCT_SID, configuration.twilio.AUTH_TOKEN);
-
-    var pkline = getAPickupLine();
     var result;
     request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
         console.log("err: ", err, " resp: ", resp, " body: ", body);
