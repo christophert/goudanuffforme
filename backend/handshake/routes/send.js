@@ -30,7 +30,8 @@ router.post('/', function(req, res, next) {
         to: "+1"+phoneNum,
         from: "+15859783364"
     }, function(err, message) {
-        if(err) { 
+        if(err) {
+            console.log(err); 
             res.send({
                 'status': 'ERROR',
                 'errmsg': message
