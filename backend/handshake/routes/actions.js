@@ -150,7 +150,7 @@ router.get('/getline', function(req, res, next){
                 request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/hotdog/json', function(error, response, body){
                     word2 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*11)+1)];
                     result = "Hey baby! You want some "+word1+" with that "+word2+"?";
-                    dispatchResult(res, respond);
+                    dispatchResult(res, result);
                 });
             });
 			break;
