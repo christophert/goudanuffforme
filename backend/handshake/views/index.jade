@@ -10,10 +10,23 @@ block content
                             li.active#homeli
                                 a#navigateit(href='/') Home
                 .inner.cover
-                    p.lead#preform
-                        form.form-getcontact#getContact(role='form')
-                            input.form-control(name='phoneNum',type='tel', placeholder='XXX-XXX-XXXX', required='', autofocus='')
-                            button.generate-button(type='submit') Generate
+                    .tabentry#tabentry
+                        ul.nav.nav-tabs#formtabs(role='tablist')
+                            li.active(role="presentation")
+                                a(href='#byphone',aria-controls="byphone",role="tab",data-toggle="tab") Phone
+                            li(role='presentation')
+                                a(href='#byemail',aria-controls="byphone",role="tab",data-toggle="tab") E-Mail
+                        .tab-content
+                            .tab-pane.active(role='tabpanel',id='byphone')
+                                p.lead
+                                    form.form-getcontact#getContact(role='form')
+                                        input.form-control(name='phoneNum',type='tel', placeholder='XXX-XXX-XXXX', required='', autofocus='')
+                                        button.generate-button(type='submit') Generate
+                            .tab-pane(role='tabpanel',id='byemail')
+                                p.lead
+                                    form.form-getcontact#getContactEmail(role='form')
+                                        input.form-control(name='email',tel='email',placeholder='email@domain.com',required='')
+                                        button.generate-button(type='submit') Generate
                     p.lead#pickupLine
                         | line here
                 .mastfoot

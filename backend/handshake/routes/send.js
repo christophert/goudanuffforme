@@ -8,12 +8,11 @@ router.get('/', function(req, res, next) {
     res.send("hello");
 });
 
-router.post('/', function(req, res, next) {
+router.post('/phone', function(req, res, next) {
     var phoneNum = req.body.phoneNum;
     var client = require('twilio')(configuration.twilio.ACCT_SID, configuration.twilio.AUTH_TOKEN);
     var result;
     request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
-        console.log("err: ", err, " resp: ", resp, " body: ", body);
         if(!err && resp.statusCode == 200) {
             console.log(body);
             var pkline = JSON.parse(body).pickUpLine;
@@ -44,5 +43,33 @@ router.post('/', function(req, res, next) {
         }
     });
 });
+
+router.post('/email', function(req, res, next) {
+    var email = req.body.email;
+    var sendgrid = require("sendgrid")(configuration.sendgrid.API_USR, configuration.sendgrid.API_KEY);
+    var newEmail = new sendgrid.Email();
+
+    request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
+        console.log("err: ", err, " resp: ", resp, " body: ", body);
+        if(!err && resp.statusCode == 200) {
+            console.log(body);
+            var pkline = JSON.parse(body).pickUpLine;
+            newEmail.addTo(email);
+            newEmail.setFrom("noreply@goudanufffor.me");
+            newEmail.setSubject("Your own special pick-up line");
+            newEmail.setHtml(pkline + "<br><a href=\"https://goudanufffor.me\">goudanufffor.me</a>");
+            sendgrid.send(newEmail);
+            res.send({
+                'status': 'OK',
+                'pickUpLine': pkline
+            });
+        } else {
+            res.send({
+                'status': 'ERROR',
+                'errmsg': err
+            });
+        }
+    });
+})
 
 module.exports = router;

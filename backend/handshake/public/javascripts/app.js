@@ -12,20 +12,32 @@ var getUrlParam = function GetURLParameter(sParam) {
     }
 }
 
+$('#navigateit').click(function (e) {
+    if($(this).text() === "Go Back") {
+        $(this).html('Home');
+    }
+});
+
+$('#formtabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+});
+
 $("#getContact").submit(function(e) {
     e.preventDefault();
     
     var serializedData = $(this).serialize();
+    console.log(serializedData);
     $.ajax({
         type: "POST",
-        url: "/api/send",
+        url: "/api/send/phone",
         data: serializedData,
         dataType: "json",
         timeout: 2000,
         cache: false,
         success: function(r) {
-            $("#preform").hide();
-            $("#getContact").fadeOut("fast", function() {
+//            $("#preform").hide();
+            $("#tabentry").fadeOut("fast", function() {
                 $("#navigateit").attr('href', '/');
                 $("#navigateit").html('Go Back');
                 $("#homeli").show();
@@ -38,3 +50,31 @@ $("#getContact").submit(function(e) {
         }
     });
 });
+
+$("#getContactEmail").submit(function(e) {
+    e.preventDefault();
+    var serializedData = $(this).serialize();
+    console.log(serializedData);
+    $.ajax({
+        type: "POST",
+        url: "/api/send/email",
+        data: serializedData,
+        dataType: "json",
+        timeout: 2000,
+        cache: false,
+        success: function(r) {
+ //           $("#preform").hide();
+            $("#tabentry").fadeOut("fast", function() {
+                $("#navigateit").attr('href', '/');
+                $("#navigateit").html('Go Back');
+                $("#homeli").show();
+                $("#pickupLine").html(r.pickUpLine);
+                $("#pickupLine").show();
+            });
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+});
+
