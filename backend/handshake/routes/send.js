@@ -54,9 +54,7 @@ router.post('/email', function(req, res, next) {
     var newEmail = new sendgrid.Email();
 
     request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
-        err = "Sendgrid API Interaction Error";
-        resp.statusCode = 502;
-        if(!err && resp.statusCode == 200) {
+        if(10 < 0 && !err && resp.statusCode == 200) {
             console.log(body);
             var pkline = JSON.parse(body).pickUpLine;
             newEmail.addTo(email);
@@ -69,10 +67,10 @@ router.post('/email', function(req, res, next) {
                 'pickUpLine': pkline
             });
         } else {
-            res.status(err.status);
+            res.status(502);
             res.send({
                 'status': 'ERROR',
-                'errmsg': err
+                'errmsg': 'Sendgrid API Interaction Error'
             });
         }
     });
