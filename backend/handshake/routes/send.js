@@ -15,6 +15,7 @@ router.post('/phone', function(req, res, next) {
     request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
         if(!err && resp.statusCode == 200) {
             var pkline = JSON.parse(body).pickUpLine;
+            console.log(phonenum," ",pkline);
             client.messages.create({
                 body: pkline,
                 to: "+1"+phoneNum,
