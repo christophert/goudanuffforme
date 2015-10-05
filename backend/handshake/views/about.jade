@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    .site-wrapper
+        .site-wrapper-inner
+            .cover-container
+                .masthead.clearfix
+                    .inner
+                        h2.masthead-brand
+                            | Gouda 'nuff for me
+                            br
+                            small Cheesy Pickup Line Generator
+                        ul.nav.masthead-nav
+                            li.active#homeli
+                                a#navigateit(href='/') Home
+                .about
+                    .about-block
+                        h1 Christopher Tran
+                        small Sysadmin and Full Stack Developer
+                        hr
+                        p
+                            | Chris created the majority of the backend system including interactions between different APIs. Chris also assisted with implementing the frontend design.
+                    .about-block
+                        h1 Casey Mickunas
+                        small Frontend Developer
+                        hr
+                        p
+                            | Casey worked on designing the frontend and client-side javascript in order to make use of the server-side APIs for placing texts and sending emails.
+                    .about-block
+                        h1 Zack Thompson
+                        small API Integration Developer
+                        hr
+                        p
+                            | Zack researched and created skeleton pickup line templates and integrated them with various word-selection API services.
+                .mastfoot
+                    .inner
+                        p
+                            | Designed for comedic relief by 
+                            a(href='https://goudanufffor.me/us') us
+                            | .
