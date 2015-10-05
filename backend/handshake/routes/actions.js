@@ -16,6 +16,18 @@ router.get('/', function(req, res, next) {
     res.send('test');
 });
 
+router.get('/gettwiml', function(req, res, next) {
+    request('https://goudanufffor.me/actions/getline', function(err, resp, body) {
+        var pkline = JSON.parse(body).pickUpLine;
+        result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+        result += "<Response>";
+        result += "<Message>";
+        result += pkline;
+        result += "</Message></Response>";
+        dispatchResult(res, result);
+    });
+});
+
 router.get('/getline', function(req, res, next){
 	var word1;
 	var word2;
