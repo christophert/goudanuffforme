@@ -14,7 +14,6 @@ router.post('/phone', function(req, res, next) {
     var result;
     request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
         if(!err && resp.statusCode == 200) {
-            console.log(body);
             var pkline = JSON.parse(body).pickUpLine;
             client.messages.create({
                 body: pkline,
@@ -26,11 +25,13 @@ router.post('/phone', function(req, res, next) {
                     res.status(err.status);
                     result = {
                         'status': 'ERROR',
+                        'msgto': phoneNum,
                         'errmsg': message
                     };
                 } else {
                     result = {
                         'status': 'OK',
+                        'msgto': phoneNum,
                         'pickUpLine': pkline
                     };
                 }
@@ -40,6 +41,7 @@ router.post('/phone', function(req, res, next) {
             res.status(err.status);
             res.send({
                 'status': 'ERROR',
+                'msgto': phoneNum,
                 'errmsg': err
             });
         }
@@ -52,7 +54,8 @@ router.post('/email', function(req, res, next) {
     var newEmail = new sendgrid.Email();
 
     request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
-        console.log("err: ", err, " resp: ", resp, " body: ", body);
+        err = "Sendgrid API Interaction Error";
+        resp.statusCode = 502;
         if(!err && resp.statusCode == 200) {
             console.log(body);
             var pkline = JSON.parse(body).pickUpLine;
@@ -60,7 +63,7 @@ router.post('/email', function(req, res, next) {
             newEmail.setFrom("noreply@goudanufffor.me");
             newEmail.setSubject("Your own special pick-up line");
             newEmail.setHtml(pkline + "<br><a href=\"https://goudanufffor.me\">goudanufffor.me</a>");
-            sendgrid.send(newEmail);
+            //sendgrid.send(newEmail);
             res.send({
                 'status': 'OK',
                 'pickUpLine': pkline
