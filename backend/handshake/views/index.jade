@@ -20,9 +20,9 @@ block content
                             li.active(role="presentation")
                                 a(href='#byphone',aria-controls="byphone",role="tab",data-toggle="tab") Phone
                             li(role='presentation')
-                                a(href='#byemail',aria-controls="byphone",role="tab",data-toggle="tab") E-Mail
+                                a(href='#byemail',aria-controls="byemail",role="tab",data-toggle="tab") E-Mail
                             li(role='presentation')
-                                a(href='#justmessage',aria-controls="byview",role="tab",data-toggle="tab") View Only
+                                a(href='#nosubmit',aria-controls="nosubmit",role="tab",data-toggle="tab") View Only
                         .tab-content
                             .tab-pane.active(role='tabpanel',id='byphone')
                                 p.lead
@@ -34,7 +34,7 @@ block content
                                     form.form-getcontact#getContactEmail(role='form')
                                         input.form-control(name='email',type='email',placeholder='email@domain.com',required='')
                                         button.generate-button(type='submit') Generate
-                            .tab-pane(role='tabpanel',id='byview')
+                            .tab-pane(role='tabpanel',id='nosubmit')
                                 p.lead
                                     form.form-getcontact#generateOnly(role='form')
                                         button.generate-button(type='submit') Generate
