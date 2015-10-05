@@ -24,7 +24,7 @@ router.get('/gettwiml', function(req, res, next) {
         result += "<Message>";
         result += pkline;
         result += "</Message></Response>";
-        dispatchResult(res, result);
+        res.send(result);
     });
 });
 
