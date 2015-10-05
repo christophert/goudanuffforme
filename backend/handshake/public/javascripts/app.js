@@ -78,14 +78,10 @@ $("#getContactEmail").submit(function(e) {
 
 $("#generateOnly").submit(function(e) {
     e.preventDefault();
-    serializedData = $(this).serialize();
-    console.log(serializedData);
     method = 'none';
     $.ajax({
         type: "POST",
         url: "/api/send/none",
-        data: serializedData,
-        dataType: "json",
         timeout: 2000,
         cache: false,
         success: function(r) {
