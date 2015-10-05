@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var configuration = require('../config.json');
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -38,11 +39,11 @@ router.get('/getline', function(req, res, next){
 		case 1:
 			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', function(error, response, body){
 				word4 = JSON.parse(body)['word'];
-                request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/person/json', function(error, response, body){
+                request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/person/json', function(error, response, body){
                     word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*5)+1)];
-                    request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/tower/json', function(error, response, body){
+                    request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/tower/json', function(error, response, body){
                         word2 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*7)+1)];
-                        request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/appendage/json', function(error, response, body){
+                        request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/appendage/json', function(error, response, body){
                             word3 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*6)+1)];
                             result = "Hey "+word1+" did you fall from "+word2+" because you're "+word3+" is "+word4;
                             dispatchResult(res, result);
@@ -78,14 +79,14 @@ router.get('/getline', function(req, res, next){
             });
             break;
         case 4:
-			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/icy/json', function(error, response, body){
+			request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/icy/json', function(error, response, body){
                 word1 = JSON.parse(body)['adjective']['syn'][Math.floor((Math.random()*7)+1)];
                 result = word1+". It's an icebreaker."; 
                 dispatchResult(res, result);
 			});
 			break;
 		case 5:
-			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/ball/json', function(error, response, body){
+			request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/ball/json', function(error, response, body){
                 word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*6)+1)];
                 result = "I must be a "+word1+" because I've fallen for you.";
                 dispatchResult(res, result);
@@ -94,7 +95,7 @@ router.get('/getline', function(req, res, next){
 		case 6:
 			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', function(error, response, body){
                 word1 = JSON.parse(body)['word'];
-                result = "Hey, didn't I seee your name in the dictionary under "+word1+".";
+                result = "Hey, didn't I see your name in the dictionary under "+word1+".";
                 dispatchResult(res, result);
 			});
 			break;
@@ -123,7 +124,7 @@ router.get('/getline', function(req, res, next){
 			});
 			break;
 		case 10:
-			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/arm/json', function(error, response, body){
+			request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/arm/json', function(error, response, body){
                 word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*10)+1)];
                 result = "Your "+word1+" look so lonely, would they like to meet mine?";
                 dispatchResult(res, result);
@@ -132,9 +133,9 @@ router.get('/getline', function(req, res, next){
 		case 11:
 			request('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a4a67090f5a1551d064670f528901c73a351b7fedc7a3e898', function(error, response, body){
                 word2 = JSON.parse(body)['word'];
-                request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/appendage/json', function(error, reponse, body){
+                request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/appendage/json', function(error, reponse, body){
                     word3 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*5)+1)];
-                    request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/person/json', function(error, response, body){
+                    request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/person/json', function(error, response, body){
                         word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*5)+1)];
                         result = "Hey, don't I know you? Yeah, you're the "+word1+" with the "+word2+" "+word3+".";
                         dispatchResult(res, result);
@@ -161,9 +162,9 @@ router.get('/getline', function(req, res, next){
 			dispatchResult(res, result);
 			break;
 		case 15:
-			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/fries/json', function(error, response, body){
+			request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/fries/json', function(error, response, body){
                 word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*8)+1)];
-                request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/hotdog/json', function(error, response, body){
+                request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/hotdog/json', function(error, response, body){
                     word2 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*11)+1)];
                     result = "Hey baby! You want some "+word1+" with that "+word2+"?";
                     dispatchResult(res, result);
@@ -171,7 +172,7 @@ router.get('/getline', function(req, res, next){
             });
 			break;
 		case 16:
-			request('http://words.bighugelabs.com/api/2/1b764ed15e63ce1aca7988445461e523/back/json', function(error, response, body){
+			request('http://words.bighugelabs.com/api/2/'+configuration.bighuge.API_KEY+'/back/json', function(error, response, body){
                 word1 = JSON.parse(body)['noun']['syn'][Math.floor((Math.random()*6)+1)];
                 result = "Your "+word1+" looks heavy, can I hold it for you?"; 
                 dispatchResult(res, result);
