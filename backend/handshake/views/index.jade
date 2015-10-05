@@ -25,7 +25,7 @@ block content
                             .tab-pane.active(role='tabpanel',id='byphone')
                                 p.lead
                                     form.form-getcontact#getContact(role='form')
-                                        input.form-control(name='phoneNum',type='tel', pattern='^\d{3}-\d{3}-\d{4}$', placeholder='XXX-XXX-XXXX', required='', autofocus='')
+                                        input.form-control(name='phoneNum',type='tel', pattern='^\\d{3}-\\d{3}-\\d{4}$', placeholder='XXX-XXX-XXXX', required='', autofocus='')
                                         button.generate-button(type='submit') Generate
                             .tab-pane(role='tabpanel',id='byemail')
                                 p.lead
