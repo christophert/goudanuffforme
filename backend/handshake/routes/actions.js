@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 function dispatchResult(res, result) {
     res.send({
         'pickUpLine':   result
@@ -92,7 +96,7 @@ router.get('/getline', function(req, res, next){
 		case 8:
 			var rando = Math.floor((Math.random()*3)+1);
 			if(rando == 1)
-				result = "Kiss me if I'm wrong, but 2+2=5, right?";
+				result = "Kiss me if I'm wrong, but ",getRandomArbitrary(1,100),"+",getRandomArbitrary(32,47),"=",getRandomArbitary(61,99),", right?";
 			else if(rando == 2)
 				result = "Kiss me if I'm wrong, but dinosaurs still exist, right?";
 			else
