@@ -76,6 +76,37 @@ $("#getContactEmail").submit(function(e) {
     });
 });
 
+$("#generateOnly").submit(function(e) {
+    e.preventDefault();
+    serializedData = $(this).serialize();
+    console.log(serializedData);
+    method = 'none';
+    $.ajax({
+        type: "POST",
+        url: "/api/send/none",
+        data: serializedData,
+        dataType: "json",
+        timeout: 2000,
+        cache: false,
+        success: function(r) {
+ //           $("#preform").hide();
+            $("#tabentry").fadeOut("fast", function() {
+                $("#navigateit").attr('href', '/');
+                $("#navigateit").html('Go Back');
+                $("#homeli").show();
+                $("#pickupLine").html(r.pickUpLine);
+                $("#pickupLine").show();
+                $("#reroll").show();
+            });
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+            $("#errmsg").html(errorThrown);
+            $("#errmsg").show(0).delay(2000).hide(0);
+        }
+    });
+});
+
 $("#reroll").submit(function(e) {
     e.preventDefault();
     console.log(serializedData);

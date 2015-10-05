@@ -21,6 +21,8 @@ block content
                                 a(href='#byphone',aria-controls="byphone",role="tab",data-toggle="tab") Phone
                             li(role='presentation')
                                 a(href='#byemail',aria-controls="byphone",role="tab",data-toggle="tab") E-Mail
+                            li(role='presentation')
+                                a(href='#justmessage',aria-controls="byview",role="tab",data-toggle="tab") View Only
                         .tab-content
                             .tab-pane.active(role='tabpanel',id='byphone')
                                 p.lead
@@ -31,6 +33,10 @@ block content
                                 p.lead
                                     form.form-getcontact#getContactEmail(role='form')
                                         input.form-control(name='email',type='email',placeholder='email@domain.com',required='')
+                                        button.generate-button(type='submit') Generate
+                            .tab-pane(role='tabpanel',id='byview')
+                                p.lead
+                                    form.form-getcontact#generateOnly(role='form')
                                         button.generate-button(type='submit') Generate
                     p.lead#pickupLine
                         | line here
@@ -43,4 +49,4 @@ block content
                             a(href='https://goudanufffor.me/us') us
                             | .
                             br
-                            | No generated message represents the views of any organization or developer, as they are completely randomly generated.
+                            | DISCLAIMER: No generated message represents the views of any organization or developer, as they are completely randomly generated.

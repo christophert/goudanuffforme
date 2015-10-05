@@ -75,6 +75,25 @@ router.post('/email', function(req, res, next) {
             });
         }
     });
-})
+});
+
+router.post('/none', function(req, res, next) {
+    request('http://goudanufffor.me/actions/getline', function(err, resp, body) {
+        if(!err && resp.statusCode == 200) {
+            console.log(body);
+            var pkline = JSON.parse(body).pickUpLine;
+            res.send({
+                'status': 'OK',
+                'pickUpLine': pkline
+            });
+        } else {
+            res.status(err.status);
+            res.send({
+                'status': 'ERROR',
+                'errmsg': 'Internal API Error'
+            });
+        }
+    });
+});
 
 module.exports = router;
